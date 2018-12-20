@@ -21,8 +21,10 @@ void delay_1ms(uint q)/*delay 1ms experienced function*/
 
 void warning_1Hz()
 {
+	P1_1=0;
 	P1_2=1;
 	delay_1ms(500);
+	P1_1=1;
 	P1_2=0;
 	delay_1ms(500);
 }
@@ -46,7 +48,11 @@ void II_INT1() interrupt 2/*infrared interruption*/
 {
 	i++;
 	PA=tab[i];
+	P1_2=1;
+	P1_1=0;
 	delay_1ms(1000);/*delay 1s*/
+	P1_2=0;
+	P1_1=1;
 }
 
 void judge_K2()
